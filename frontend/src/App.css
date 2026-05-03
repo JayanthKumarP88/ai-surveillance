@@ -1,0 +1,327 @@
+/* ────────────────────────────────────────────────
+   Soft Arctic UI — Light Tactical Dashboard (FINAL)
+   Collapsible mini-icon sidebar + button glow
+──────────────────────────────────────────────────*/
+
+/* Theme */
+:root {
+  --bg: #0b0f19;
+  --panel: rgba(17, 24, 39, 0.7);
+  --panel2: rgba(31, 41, 55, 0.8);
+  --muted: #9ca3af;
+  --txt: #f3f4f6;
+  --accent: #3b82f6;
+  --ok: #10b981;
+  --warn: #f59e0b;
+  --bad: #ef4444;
+  --mid: #f97316;
+  --soft-red: rgba(239, 68, 68, 0.1);
+  --soft-amber: rgba(245, 158, 11, 0.1);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --ring: 0 0 0 4px rgba(59, 130, 246, 0.3);
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  background: radial-gradient(circle at 50% 0%, #1e293b, var(--bg));
+  background-attachment: fixed;
+  color: var(--txt);
+  font-family: Inter, system-ui, Arial, sans-serif;
+}
+
+/* --- LAYOUT --- */
+.app {
+  display: flex;
+  height: 100%;
+  padding: 24px; /* Increased padding */
+  gap: 24px; /* Increased gap */
+  max-width: 10000px;
+  margin: auto;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Increased main content gap */
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+  width: 240px;
+  background: var(--panel);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px; /* Adjusted padding */
+  display: flex;
+  flex-direction: column;
+}
+
+/* (Sidebar navigation styles are fine, no major changes needed) */
+.navbtn {
+  all: unset;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  margin: 4px 0; /* Slightly reduced margin */
+  border-radius: 8px;
+  background: transparent; /* Cleaner default state */
+  color: var(--txt);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+.navbtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.navbtn:active {
+  transform: translateY(1px);
+}
+.navbtn.active {
+  background: rgba(59, 130, 246, 0.15);
+  font-weight: 600;
+  outline: 1px solid var(--accent);
+}
+.foot {
+  margin-top: auto;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+  padding-top: 16px;
+}
+
+/* --- HEADER & CONTROLS --- */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* This is the panel for the main actions */
+.control-panel {
+  background: var(--panel);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px; /* Added margin to create separation */
+}
+
+.inp {
+  background: rgba(17, 24, 39, 0.6);
+  border: 1px solid var(--border-color);
+  color: var(--txt);
+  padding: 8px 12px;
+  border-radius: 8px;
+  min-width: 140px;
+  font-size: 14px;
+}
+.inp:focus {
+  outline: none;
+  box-shadow: var(--ring);
+  border-color: var(--accent);
+}
+
+.btn {
+  all: unset;
+  background: #1f2937; /* Darker default */
+  color: #fff;
+  padding: 10px 20px; /* More horizontal padding */
+  border-radius: 8px; /* Modern squared-off radius */
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px; /* Explicit font size */
+  text-align: center;
+  transition: all 0.15s ease;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+.btn:active {
+  transform: translateY(0px);
+}
+.btn.blue {
+  background: var(--accent);
+}
+.btn.purple {
+  background: #7c3aed;
+}
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* --- CARDS & GRIDS --- */
+.card {
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card:hover {
+  box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.cardtop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px; /* More space below title */
+}
+.cardtitle {
+  font-weight: 700;
+  font-size: 16px; /* Slightly larger title */
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px; /* Increased gap */
+}
+.grid3 {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px; /* Increased gap */
+}
+
+/* --- FEED & LISTS (Most of these are fine) --- */
+.feed {
+  max-height: 420px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+  padding-right: 8px; /* Prevent scrollbar from overlapping content */
+}
+.feedItem {
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* --- SCROLLBARS --- */
+.panel-scroll::-webkit-scrollbar,
+.feed::-webkit-scrollbar {
+  width: 6px;
+}
+.panel-scroll::-webkit-scrollbar-thumb,
+.feed::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+/* (The rest of your utility classes like .tag, .bar, etc., are well-structured and don't need major changes) */
+.flag.fake {
+  background: #b3000f;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  margin-right: 4px;
+}
+.flag.opsec {
+  background: #b38f00;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  margin-right: 4px;
+}
+.panel-scroll {
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.cluster {
+  word-break: break-word;
+  white-space: pre-wrap;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+}
+.cluster:last-child {
+  border-bottom: none;
+}
+
+.listbox {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.listbox::-webkit-scrollbar {
+  width: 6px;
+}
+.listbox::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.listitem {
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 0;
+  word-break: break-word;
+}
+.listitem:last-child {
+  border-bottom: none;
+}
+
+.mline {
+  word-break: break-word;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.actionbar {
+  margin-bottom: 20px;
+}
+
+.actionbar .left {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.actionbar .right {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Custom Map Filter */
+.deep-blue-map {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
