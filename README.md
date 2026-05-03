@@ -14,24 +14,24 @@ The system simulates a full OSINT (Open Source Intelligence) pipeline — from s
 
 ## Key Features
 
-### 📊 Threat Dashboard
+### Threat Dashboard
 - **Synthetic Data Generation** — Generates realistic social media posts (120+ per batch) across 10 Indian metro cities with configurable modes: `baseline`, `escalation`, and `coordination`.
 - **Protest Escalation Detection** — Multi-signal scoring engine that evaluates volume spikes, negative sentiment shifts, violence keyword density, and media surge rates to produce a 0–100 threat score (`baseline` → `moderate` → `high` → `critical`).
 - **Coordination / Bot Cluster Detection** — Identifies suspicious bot networks using Jaccard similarity, MD5 content fingerprinting, duplicate ratios, account age analysis, and follower/following anomalies.
 - **OPSEC & Disinformation Scanner** — Flags posts containing misinformation indicators (`FAKE_DISINFORMATION`) or operational security leaks (`SENSITIVE_OPSEC`) with automated dossier generation.
 - **Risk Classification** — Categorizes posts into `HIGH` and `MILD` risk tiers based on weighted scoring of violence terminology, mobilization language, coordination jargon, and infrastructure targeting.
 
-### 🗺️ Live Threat Map (Leaflet)
+### Live Threat Map (Leaflet)
 - **Interactive India Map** — Plots all generated posts as geo-tagged markers on a Leaflet map.
 - **Threat Zone Visualization** — High-risk posts rendered as large red radius circles to indicate danger zones.
 - **Dynamic Convoy Routing** — Planned route (Delhi → Jaipur → Ahmedabad → Surat → Mumbai → Pune → Hyderabad → Bangalore) with automatic safe-route bypass generation when threats intersect waypoints.
 - **Route Comparison** — Visual overlay of planned route (blue/red) vs. computed safe route (green).
 
-### 🧪 Image Forensics
+### Image Forensics
 - **GAN Deepfake Detector** — Scores images 0–100 using edge density analysis, bright/dark extreme fractions, RGB channel imbalance, and blockiness proxy (downscale→upscale RMS diff).
 - **PRNU Camera Fingerprinting** — Register device sensor noise patterns from multiple images, then match unknown images to registered cameras via pseudo-noise correlation.
 
-### 📁 Automated Dossier Generation
+### Automated Dossier Generation
 - One-click feed scanning produces JSON dossier files with full evidence trails, analyst attribution, and per-post verdicts.
 
 ## Architecture
